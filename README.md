@@ -9,10 +9,12 @@ jwtcli
 
 Create JWTs from the command line.
 
+Essentially this is a wrapper around the njwt npm package using oclif.
+
 Install from npm or binary release (only a windows binary has been built: open an issue if other platform binary releases are required).
 
 ``` bash
-jwtcli --json test.json --key secret
+jwtcli create --json test.json --key secret
 ```
 
 Both flags are required.
@@ -22,11 +24,11 @@ Both flags are required.
 A test .json file is in `test/`:
 
 ``` bash
-jwtcli -k secret -j test/test.json
+jwtcli create -k secret -j test/test.json
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImp0aSI6ImJjNzZkNDU5LWJjYjEtNGQyOS1iNDU0LTgzYTZkMDdhMTBmMSIsImlhdCI6MTYxNjE1ODczMiwiZXhwIjoxNjE2MTYyMzMyfQ.Em0yCPN82u3OPInQ7xJ0MK7VtcLK_sJLAaaZG7qb9Ns
 ```
 
-JWTs can be verified at <https://jwt.io/> (remember to input the correct `secret`)
+JWTs can be verified at <https://jwt.io/> (remember to input the correct `secret`) or with the `verify` command (see CLI reference below).
 
 
 Auto-generated CLI reference below:
