@@ -1,5 +1,5 @@
 {
-  "name": "jwtcli",
+  "name": "@jplomas/jwtcli",
   "description": "JWTs",
   "version": "1.0.0",
   "author": "JP Lomas @jplomas",
@@ -36,7 +36,11 @@
   "license": "MIT",
   "main": "src/index.js",
   "oclif": {
-    "bin": "jwtcli"
+    "commands": "./src/commands",
+    "bin": "jwtcli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
   },
   "repository": "jplomas/jwtcli",
   "scripts": {

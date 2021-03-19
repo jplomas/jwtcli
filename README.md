@@ -27,3 +27,92 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 ```
 
 JWTs can be verified at <https://jwt.io/> (remember to input the correct `secret`)
+
+
+Auto-generated CLI reference below:
+
+<!-- toc -->
+* [Usage](#usage)
+* [Commands](#commands)
+<!-- tocstop -->
+
+# Usage
+
+<!-- usage -->
+```sh-session
+$ npm install -g @jplomas/jwtcli
+$ jwtcli COMMAND
+running command...
+$ jwtcli (-v|--version|version)
+@jplomas/jwtcli/1.0.0 darwin-x64 node-v12.16.1
+$ jwtcli --help [COMMAND]
+USAGE
+  $ jwtcli COMMAND
+...
+```
+<!-- usagestop -->
+
+# Commands
+
+<!-- commands -->
+* [`jwtcli create`](#jwtcli-create)
+* [`jwtcli help [COMMAND]`](#jwtcli-help-command)
+* [`jwtcli verify`](#jwtcli-verify)
+
+## `jwtcli create`
+
+Create a JWT from a JSON file and secret string
+
+```
+Create a JWT from a JSON file and secret string
+
+USAGE
+  $ jwtcli create
+
+OPTIONS
+  -h, --help       show CLI help
+  -j, --json=json  (required) file of json to encode
+  -k, --key=key    (required) secret key to encrypt
+  -v, --version    show CLI version
+```
+
+_See code: [src/commands/create.js](https://github.com/jplomas/jwtcli/blob/v1.0.0/src/commands/create.js)_
+
+## `jwtcli help [COMMAND]`
+
+display help for jwtcli
+
+```
+display help for <%= config.bin %>
+
+USAGE
+  $ jwtcli help [COMMAND]
+
+ARGUMENTS
+  COMMAND  command to show help for
+
+OPTIONS
+  --all  see all commands in CLI
+```
+
+_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+
+## `jwtcli verify`
+
+Verify a JWT string secret string
+
+```
+Verify a JWT string secret string
+
+USAGE
+  $ jwtcli verify
+
+OPTIONS
+  -h, --help         show CLI help
+  -k, --key=key      (required) signing key (or public key if ECC used)
+  -t, --token=token  (required) JWT to verify
+  -v, --version      show CLI version
+```
+
+_See code: [src/commands/verify.js](https://github.com/jplomas/jwtcli/blob/v1.0.0/src/commands/verify.js)_
+<!-- commandsstop -->
