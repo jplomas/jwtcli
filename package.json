@@ -1,5 +1,5 @@
 {
-  "name": "@jplomas/jwtcli",
+  "name": "jwtcli",
   "description": "JWTs",
   "version": "1.0.0",
   "author": "JP Lomas @jplomas",
