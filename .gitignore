@@ -7,3 +7,4 @@
 node_modules
 /.editorconfig
 /.vscode
+/coverage.lcov
