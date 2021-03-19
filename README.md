@@ -11,15 +11,19 @@ Create JWTs from the command line.
 
 Essentially this is a wrapper around the njwt npm package using oclif.
 
-Install from npm or binary release (only a windows binary has been built: open an issue if other platform binary releases are required).
+Install from npm or binary release (only a [windows binary installer](https://github.com/jplomas/jwtcli/releases) has been built: open an issue if other builds/platform binary releases are required).
 
 ``` bash
 jwtcli create --json test.json --key secret
 ```
 
-Both flags are required.
+Both of these flags are required.
 
-![Powershell](powershell.png)
+By default, HS256 is used to create the JWT.  Alternative algorithms can be used by specifying an `-a` or `--algorithm` flag:
+
+```bash
+jwtcli create --json test.json --key secret --algorithm HS512
+```
 
 A test .json file is in `test/`:
 
@@ -46,7 +50,7 @@ $ npm install -g @jplomas/jwtcli
 $ jwtcli COMMAND
 running command...
 $ jwtcli (-v|--version|version)
-@jplomas/jwtcli/1.0.0 darwin-x64 node-v12.16.1
+@jplomas/jwtcli/2.0.0 darwin-x64 node-v12.16.1
 $ jwtcli --help [COMMAND]
 USAGE
   $ jwtcli COMMAND
@@ -72,13 +76,14 @@ USAGE
   $ jwtcli create
 
 OPTIONS
-  -h, --help       show CLI help
-  -j, --json=json  (required) file of json to encode
-  -k, --key=key    (required) secret key to encrypt
-  -v, --version    show CLI version
+  -a, --algorithm=algorithm  algorithm
+  -h, --help                 show CLI help
+  -j, --json=json            (required) file of json to encode
+  -k, --key=key              (required) secret key to encrypt
+  -v, --version              show CLI version
 ```
 
-_See code: [src/commands/create.js](https://github.com/jplomas/jwtcli/blob/v1.0.0/src/commands/create.js)_
+_See code: [src/commands/create.js](https://github.com/jplomas/jwtcli/blob/v2.0.0/src/commands/create.js)_
 
 ## `jwtcli help [COMMAND]`
 
@@ -110,11 +115,12 @@ USAGE
   $ jwtcli verify
 
 OPTIONS
-  -h, --help         show CLI help
-  -k, --key=key      (required) signing key (or public key if ECC used)
-  -t, --token=token  (required) JWT to verify
-  -v, --version      show CLI version
+  -a, --algorithm=algorithm  (optional) algorithm; defaults to HS256 if not specified
+  -h, --help                 show CLI help
+  -k, --key=key              (required) signing key (or public key if ECC used)
+  -t, --token=token          (required) JWT to verify
+  -v, --version              show CLI version
 ```
 
-_See code: [src/commands/verify.js](https://github.com/jplomas/jwtcli/blob/v1.0.0/src/commands/verify.js)_
+_See code: [src/commands/verify.js](https://github.com/jplomas/jwtcli/blob/v2.0.0/src/commands/verify.js)_
 <!-- commandsstop -->

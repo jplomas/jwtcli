@@ -5,6 +5,8 @@ const expiredToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3O
 const json = { test: 123 }
 const jwt = nJwt.create(json, 'secret', 'HS256')
 const newToken = jwt.compact()
+const jwt512 = nJwt.create(json, 'secret', 'HS512')
+const newToken512 = jwt512.compact()
 const invalidToken = newToken.substring(0, newToken.length - 3)
 
 describe('>> VERIFY', () => {
@@ -62,6 +64,12 @@ describe('>> VERIFY', () => {
   .stdout()
   .command(['verify', '--key', 'secret', '--token', newToken])
   .it('correctly reports a valid token', async ctx => {
+    expect(ctx.stdout).to.contain('JWT is valid')
+  })
+  test
+  .stdout()
+  .command(['verify', '--key', 'secret', '-a', 'HS512', '--token', newToken512])
+  .it('correctly reports a valid token generated with alternative algorithm', async ctx => {
     expect(ctx.stdout).to.contain('JWT is valid')
   })
 })

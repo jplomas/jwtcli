@@ -24,16 +24,17 @@ describe('>> CREATE', () => {
 
   test
   .stdout()
-  .command(['create', '-k', 'secret', '--json', jsonTest])
-  .it('makes a valid length jwt', ctx => {
-    expect(ctx.stdout.length).to.equal(256)
+  .command(['create', '--key', 'secret', '--json', jsonTest])
+  .it('correctly encrypts payload (will verify with correct secret)', async ctx => {
+    const verify = await nJwt.verify(ctx.stdout, 'secret')
+    expect(verify.header.typ).to.equal('JWT')
   })
 
   test
   .stdout()
-  .command(['create', '--key', 'secret', '--json', jsonTest])
-  .it('correctly encrypts payload (will verify with correct secret)', async ctx => {
-    const verify = await nJwt.verify(ctx.stdout, 'secret')
+  .command(['create', '--algorithm', 'HS512', '--key', 'secret', '--json', jsonTest])
+  .it('correctly encrypts payload using non-default algorithm', async ctx => {
+    const verify = await nJwt.verify(ctx.stdout, 'secret', 'HS512')
     expect(verify.header.typ).to.equal('JWT')
   })
 
