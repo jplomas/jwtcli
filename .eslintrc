@@ -1,0 +1,6 @@
+{
+  "extends": "oclif",
+  "rules": {
+    "object-curly-spacing": [ "error", "always" ]
+  }
+}
